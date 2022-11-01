@@ -56,6 +56,8 @@ font_game_over = pygame.font.Font("freesansbold.ttf", 64)
 text_x = 10
 text_y = 10
 
+pressed = []
+
 
 def show_score(x, y):
     score = font.render(f"Score: {score_value}", True, (255, 255, 255))
@@ -103,15 +105,21 @@ while running:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 player_x_change = -0.3
+                pressed.append("<")
             if event.key == pygame.K_RIGHT:
                 player_x_change = 0.3
+                pressed.append(">")
             if event.key == pygame.K_SPACE and missile_state == "ready":
                 blast_sound = mixer.Sound('blaster.wav')
                 blast_sound.play()
                 missile_x = player_x
                 fire_missile(missile_x, missile_y)
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_LEFT:
+                pressed.remove("<")
+            if event.key == pygame.K_RIGHT:
+                pressed.remove(">")
+            if len(pressed) == 0:
                 player_x_change = 0
 
     # change position of player
