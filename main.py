@@ -53,15 +53,13 @@ missile_state = "ready"
 score_value = 0
 font = pygame.font.Font("freesansbold.ttf", 32)
 font_game_over = pygame.font.Font("freesansbold.ttf", 64)
-text_x = 10
-text_y = 10
-
+# Player movements list
 pressed = []
 
 
-def show_score(x, y):
+def show_score():
     score = font.render(f"Score: {score_value}", True, (255, 255, 255))
-    screen.blit(score, (x, y))
+    screen.blit(score, (10, 10))
 
 
 def game_over_text():
@@ -164,5 +162,5 @@ while running:
         missile_y = 480
         missile_state = "ready"
     # Show score
-    show_score(text_x, text_y)
+    show_score()
     pygame.display.update()  # This updates the changes in the screen
