@@ -38,7 +38,7 @@ for i in range(number_of_enemies):
     enemy_img.append(pygame.image.load("alien.png"))
     enemy_x.append(random.randint(0, 735))
     enemy_y.append(random.randint(50, 150))
-    enemy_x_change.append(0.1)
+    enemy_x_change.append(0.2)
     enemy_y_change.append(40)
 
 # Missile
@@ -64,15 +64,15 @@ def show_score(x, y):
 
 def game_over_text():
     game_over = font_game_over.render("GAME OVER", True, (255, 255, 255))
-    screen.blit(game_over, (200, 250));
+    screen.blit(game_over, (200, 250))
 
 
 def player(x, y):
     screen.blit(player_img, (x, y))
 
 
-def enemy(x, y, i):
-    screen.blit(enemy_img[i], (x, y))
+def enemy(x, y, position):
+    screen.blit(enemy_img[position], (x, y))
 
 
 def fire_missile(x, y):
