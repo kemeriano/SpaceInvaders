@@ -141,11 +141,8 @@ while running:
             break
         # Update enemies positions
         enemy_x[i] += enemy_x_change[i]
-        if enemy_x[i] <= 0:
-            enemy_x_change[i] = 0.2
-            enemy_y[i] += enemy_y_change[i]
-        if enemy_x[i] >= 736:
-            enemy_x_change[i] = -0.2
+        if enemy_x[i] <= 0 or enemy_x[i] >= 736:
+            enemy_x_change[i] = -enemy_x_change[i]
             enemy_y[i] += enemy_y_change[i]
         # Render enemy
         enemy(enemy_x[i], enemy_y[i], i)
